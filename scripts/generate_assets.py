@@ -49,7 +49,7 @@ def collect():
       user(login: $login) {
         repositories(ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false, first: 100) {
           totalCount
-          nodes { stargazerCount languages(first: 20) { nodes { name } } }
+          nodes { languages(first: 20) { nodes { name } } }
         }
         contributionsCollection { contributionCalendar { totalContributions } }
       }
@@ -68,7 +68,6 @@ def collect():
 
     return {
         "repos": user["repositories"]["totalCount"],
-        "stars": sum(r["stargazerCount"] for r in repos),
         "contributions": user["contributionsCollection"]["contributionCalendar"]["totalContributions"],
         "languages": langs,
     }
@@ -101,10 +100,9 @@ def hero_svg():
 def stats_svg(d):
     cells = [
         ("contributions, 12 mo", d["contributions"], ACCENT),
-        ("stars earned", d["stars"], TEXT),
         ("public repos", d["repos"], TEXT),
     ]
-    col = 592 / 3
+    col = 592 / len(cells)
     parts = [hline(32, 44, 636)]
     for i, (label, value, colour) in enumerate(cells):
         cx = 44 + col * (i + 0.5)

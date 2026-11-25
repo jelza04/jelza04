@@ -7,7 +7,7 @@
   <a href="mailto:jabijiya04@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-108e88?style=for-the-badge&labelColor=0b0b0c&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
 
-<img src="assets/stats.svg" width="100%" alt="GitHub stats: contributions in the last 12 months, stars and public repositories" />
+<img src="assets/stats.svg" width="100%" alt="GitHub stats: contributions in the last 12 months and public repositories" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/heatmap-dark.svg">
@@ -45,6 +45,14 @@ A chat companion that responds to how you feel. Replies come from a retrieval-au
 When a pilot can't fly, the system finds a replacement who is legally allowed to fly and can reach the airport in time. I joined an existing codebase, found the core logic only existed in the frontend, and rebuilt it in the Java backend: checks against 9 DGCA duty-time rules, reachability estimates, and a 0–100 score to rank standby pilots. I also fixed the bugs stopping it from running and closed a security hole that let anyone create an admin account.
 
 **Stack:** Java 21 · Spring Boot · Spring Security · PostgreSQL · React · Docker
+
+### NutriLens — Nutrition label analysis
+
+Take a photo of a food label and get a clear, comparable nutrition record instead of squinting at the fine print. An OCR pipeline reads the label and turns it into structured data. A machine learning model trained on nutrient features then scores the product. Regulatory limits are stored as settings in the database, not hard-coded, so a rule can change without redeploying the app.
+
+If the photo is too blurry or the label can't be read reliably, the app says "Unverifiable" instead of guessing. A confident wrong answer about food is worse than no answer.
+
+**Stack:** React · TanStack Query · FastAPI · scikit-learn · OpenCV · MySQL
 
 ## Stack
 
